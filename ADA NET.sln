@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ada.Caixa.Aula01.WebApi", "Ada.Caixa.Aula01.WebApi\Ada.Caixa.Aula01.WebApi.csproj", "{D82E511E-FF19-96FE-0FBF-DE3AFA6A6BDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D82E511E-FF19-96FE-0FBF-DE3AFA6A6BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82E511E-FF19-96FE-0FBF-DE3AFA6A6BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82E511E-FF19-96FE-0FBF-DE3AFA6A6BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82E511E-FF19-96FE-0FBF-DE3AFA6A6BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2808885F-800A-41C4-AF09-25CE84F2AEA8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@Ada.Caixa.Aula01.WebApi_HostAddress = http://localhost:5109
+
+GET {{Ada.Caixa.Aula01.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
