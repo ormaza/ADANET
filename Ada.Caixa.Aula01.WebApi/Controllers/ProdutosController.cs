@@ -12,6 +12,7 @@ public class ProdutosController : ControllerBase
     };
 
     [HttpGet]
+    [Produces("application/xml", "application/json")]
     public IActionResult Get()
     {
         return Ok(produtos);
@@ -41,6 +42,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPut]
+    [Consumes("application/json", "application/xml")]
     public IActionResult Put([FromBody] Produto produto)
     {
         var produtoExistente = produtos.FirstOrDefault(p => p.Id.Equals(produto.Id));

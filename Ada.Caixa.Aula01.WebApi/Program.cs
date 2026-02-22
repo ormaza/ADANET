@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 //referência para a pasta Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddXmlDataContractSerializerFormatters(); //trazer o suporte para XML, caso seja necessário retornar a resposta nesse formato
 
 //adicionar swagger
 builder.Services.AddEndpointsApiExplorer();
