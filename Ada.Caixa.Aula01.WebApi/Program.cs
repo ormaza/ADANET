@@ -7,7 +7,7 @@ builder.Services.AddOpenApi();
 //referência para a pasta Controllers
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add(new CustomExceptionFilter());
+    options.Filters.Add<CustomExceptionFilter>();
     options.Filters.Add(new ResponseWrapperFilter());
 }).AddXmlDataContractSerializerFormatters(); //trazer o suporte para XML, caso seja necessário retornar a resposta nesse formato
 
