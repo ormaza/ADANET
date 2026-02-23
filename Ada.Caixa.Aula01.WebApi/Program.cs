@@ -8,8 +8,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(new CustomExceptionFilter());
-})
-    .AddXmlDataContractSerializerFormatters(); //trazer o suporte para XML, caso seja necessário retornar a resposta nesse formato
+    options.Filters.Add(new ResponseWrapperFilter());
+}).AddXmlDataContractSerializerFormatters(); //trazer o suporte para XML, caso seja necessário retornar a resposta nesse formato
 
 //adicionar swagger
 builder.Services.AddEndpointsApiExplorer();

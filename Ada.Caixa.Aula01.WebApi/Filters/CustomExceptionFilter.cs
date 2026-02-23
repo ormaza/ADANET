@@ -8,7 +8,7 @@ public class CustomExceptionFilter : IExceptionFilter
         int statusCode = StatusCodes.Status500InternalServerError;
         string message = "Ocorreu um erro inesperado. Por favor, contate o suporte da API.";
 
-        if(context.Exception is ArgumentException)
+        if(context.Exception is ArgumentNullException)
         {
             statusCode = StatusCodes.Status400BadRequest;
             message = "Dados inválidos foram fornecidos.";
@@ -26,7 +26,7 @@ public class CustomExceptionFilter : IExceptionFilter
         {
             StatusCode = statusCode
         };
-        
+
         context.ExceptionHandled = true;
     }
 }
