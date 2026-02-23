@@ -32,8 +32,8 @@ public class ProdutosController : ControllerBase
             produto.Quantidade,
             _links = new
             {
-                self = new { href = Url.Action("Get", new {id}), method = "GET" },
-                update = new { href = Url.Action("Update", new Produto()), method = "PUT" },
+                self = new { href = Url.Action("GetById", new {id}), method = "GET" },
+                update = new { href = Url.Action("Update", new {id}), method = "PUT", body = new { Nome = "string", Quantidade = "int" } },
                 delete = new { href = Url.Action("Delete", new {id}), method = "DELETE" }
             }
         };
@@ -41,11 +41,11 @@ public class ProdutosController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     [Consumes("application/json", "application/xml")]
-    public IActionResult Put([FromBody] Produto produto)
+    public IActionResult Update(int id, [FromBody] Produto produto)
     {
-        var produtoExistente = produtos.FirstOrDefault(p => p.Id.Equals(produto.Id));
+        var produtoExistente = produtos.FirstOrDefault(p => p.Id.Equals(id));
 
         if(produtoExistente != null)
         {
@@ -53,7 +53,7 @@ public class ProdutosController : ControllerBase
             produtoExistente.Quantidade = produto.Quantidade;
         }
         else
-            return BadRequest($"Produto ID: {produto.Id} não encontrado");
+            return BadRequest($"Produto ID: {id} não encontrado");
 
         var index = produtos.IndexOf(produtoExistente);
         produtos[index] = produtoExistente;
