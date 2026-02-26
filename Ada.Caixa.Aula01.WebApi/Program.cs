@@ -1,3 +1,7 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +19,26 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
+
+var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("A chave JWT não foi encontrada na configuração.");
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+                    };
+                });
+
+builder.Services.AddAuthorization();
 
 //referência para a pasta Controllers
 builder.Services.AddControllers(options =>
@@ -39,7 +63,14 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+//usando CORS
 app.UseCors("MeuFrontEndCaixa");
+
+//usando autenticação
+app.UseAuthentication();
+
+//usando autorização
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 
