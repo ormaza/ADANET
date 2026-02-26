@@ -4,6 +4,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+//CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MeuFrontEndCaixa", policy =>
+    {
+        policy.WithOrigins("https://caixa.gov.br", "http://localhost:3000") //substituir pela URL do front-end
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 //referência para a pasta Controllers
 builder.Services.AddControllers(options =>
 {
@@ -26,6 +38,8 @@ if (app.Environment.IsDevelopment())
     
     app.MapOpenApi();
 }
+
+app.UseCors("MeuFrontEndCaixa");
 
 app.UseHttpsRedirection();
 
