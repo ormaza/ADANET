@@ -13,6 +13,7 @@ public class ProdutosController : ControllerBase
         new Produto { Id = 3, Nome = "Produto 3", Quantidade = 30 }
     };
 
+    [Authorize(Roles = "Backoffice")]
     [HttpGet]
     [Produces("application/xml", "application/json")]
     public IActionResult Get()
