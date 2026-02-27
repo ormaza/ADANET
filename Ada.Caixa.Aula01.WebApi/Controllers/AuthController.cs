@@ -43,7 +43,7 @@ public class AuthController : ControllerBase
     {
         var key = _configuration["Jwt:Key"] ?? throw new InvalidOperationException("A chave JWT é inválida");
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.Aes128CbcHmacSha256);
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         //Geração do Token, enviar os Claims (Permissoes)
         var claims = new[]
