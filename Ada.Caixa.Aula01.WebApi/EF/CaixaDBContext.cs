@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-public class CaixaDbContext : DbContext
+public class CaixaDBContext : DbContext
 {
-    public CaixaDbContext(DbContextOptions<CaixaDbContext> options) : base(options)
+    public CaixaDBContext(DbContextOptions<CaixaDBContext> options) : base(options)
     {
     }
 

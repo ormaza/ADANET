@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ada.Caixa.Aula01.WebApi.Migrations
 {
-    [DbContext(typeof(CaixaDbContext))]
-    [Migration("20260228214533_VersaoInicial")]
+    [DbContext(typeof(CaixaDBContext))]
+    [Migration("20260228222910_VersaoInicial")]
     partial class VersaoInicial
     {
         /// <inheritdoc />
@@ -23,6 +23,14 @@ namespace Ada.Caixa.Aula01.WebApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Agencia")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Conta")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Saldo")
                         .HasColumnType("TEXT");

@@ -7,9 +7,10 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ContaRepository>();
 
 //configuração do banco de dados
-builder.Services.AddDbContext<CaixaDbContext>(options =>
+builder.Services.AddDbContext<CaixaDBContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //CORS

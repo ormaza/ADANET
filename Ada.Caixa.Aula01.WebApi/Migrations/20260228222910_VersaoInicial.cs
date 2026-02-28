@@ -17,6 +17,8 @@ namespace Ada.Caixa.Aula01.WebApi.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TitularConta = table.Column<string>(type: "TEXT", nullable: false),
+                    Agencia = table.Column<string>(type: "TEXT", nullable: false),
+                    Conta = table.Column<string>(type: "TEXT", nullable: false),
                     Saldo = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

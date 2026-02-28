@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ada.Caixa.Aula01.WebApi.Migrations
 {
-    [DbContext(typeof(CaixaDbContext))]
-    partial class CaixaDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CaixaDBContext))]
+    partial class CaixaDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,14 @@ namespace Ada.Caixa.Aula01.WebApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Agencia")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Conta")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Saldo")
                         .HasColumnType("TEXT");
