@@ -1,4 +1,5 @@
 using System.Text;
+using Ada.Caixa.Aula01.WebApi.ModelsFirstEF;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +13,9 @@ builder.Services.AddScoped<ClienteRepository>();
 
 //configuração do banco de dados
 builder.Services.AddDbContext<CaixaDBContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<MeuContextoExistente>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //CORS

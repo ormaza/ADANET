@@ -10,6 +10,21 @@ public class ClienteRepository
     }
     public List<Cliente> ListarTodosClientes()
     {
-        return _meuContextoExistente.Clientes.ToList();
+        var clientes = new List<Cliente>();
+        foreach (var cliente in _meuContextoExistente.Clientes)
+        {
+            var pedidos = _meuContextoExistente.Pedidos.Where(p => p.ClienteId == cliente.Id).ToList();
+            
+            var newCliente = new Cliente
+            {
+                Id = cliente.Id,
+                Nome = cliente.Nome,
+                Email = cliente.Email,
+                Pedidos = pedidos
+            };
+
+            clientes.Add(newCliente);
+        }
+        return clientes;
     }
 }
