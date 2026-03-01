@@ -14,7 +14,11 @@ public class ClienteController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        var clientes = _clienteRepository.ListarTodosClientes();
-        return Ok(clientes);
+        // var clientes = _clienteRepository.ListarTodosClientes();
+        // return Ok(clientes);
+
+        DapperContext dapperContext = new DapperContext();
+        var clientesDapper = dapperContext.ListAllClientesDapper();
+        return Ok(clientesDapper);
     }
 }
