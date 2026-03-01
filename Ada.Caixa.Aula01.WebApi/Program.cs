@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ContaRepository>();
+builder.Services.AddScoped<ClienteRepository>();
 
 //configuração do banco de dados
 builder.Services.AddDbContext<CaixaDBContext>(options =>
